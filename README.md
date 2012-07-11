@@ -1,8 +1,15 @@
 # pandocgen
 
-This is a generation framework for getting PDF and HTML out of Markdown files. It
-uses Pandoc, so the Markdown files can use Pandoc extensions to provide a slicker
-output.
+This is a generation framework for yielding PDF and HTML from good old Markdown files. It
+uses the eminent [Pandoc tool](http://johnmacfarlane.net/pandoc/), so the Markdown files
+can use Pandoc extensions to provide a slicker
+output, including mathematical expressions.
+
+**NOTE**: for some reason, the creator of Pandoc, John MacFarlane, has not named the
+Pandoc Markdown extension language. I sometimes refer to it as **PandocMarkdown**.
+
+**NOTE**: Pandoc is capable of translating between a host of formats, but this
+**pandocgen** project focuses on (Pandoc-)Markdown input.
 
 ## Very, Very Quick Intro...
 
