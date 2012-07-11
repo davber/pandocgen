@@ -4,6 +4,32 @@ This is a generation framework for getting PDF and HTML out of Markdown files. I
 uses Pandoc, so the Markdown files can use Pandoc extensions to provide a slicker
 output.
 
+## Very, Very Quick Intro...
+
+1. Add this project as a submodule
+   `git submodule add git@github.com:davber/pandocgen.git`
+1. Create some beautiful Markdown file, `MyCoolDoc.md`
+1. Create a Makefile like this:
+>  BASE=MyCoolDoc
+>  include pandocgen/Makefile
+1. Make space for the generated files:
+>  mkdir gen
+1. Create the PDF and HTML files:
+>  make all
+
+That is it! Now you have a PDF and HTML version of your Markdown document.
+
+There are some dependencies, though.
+
+## Dependencies
+
+You need to have these items installed:
+
+1. A Gnu `make` command, preferably version 3.80 or later. On most decent machines,
+   this is already installed.
+1. LaTex, such as [TeX Live](http://www.tug.org/texlive/).
+1. [Pandoc](http://johnmacfarlane.net/pandoc/) --- the tool actually doing the generation
+
 ## Using It...
 
 To use this framework, there are two paths:
@@ -11,7 +37,7 @@ To use this framework, there are two paths:
 1. Include the provided `Makefile` in your own Makefile, after a section where you
    specify a few custom parameters, as defined in the Custom Parameters section.
 2. Set the custom parameters as environment variables and use the provided `Makefile`
-   as is.
+   as is.   
    
 ## Building Targets
 
@@ -54,9 +80,7 @@ be. That will translate into a no-op for that make step.
 
 ## Helper Files
 
-The helper files reside in the `input` directory, so if you build from a directory
-other than the top directory of this project, please provide a symbolic link to that
-`input` directory, so that Pandoc can find those files.
+The helper files reside in the `input` directory.
 
 The helper files are:
 
