@@ -1,0 +1,147 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title></title>
+  \usepackage{fourier} % or what ever
+  \usepackage[scaled=.92]{helvet}%. Sans serif - Helvetica
+  \usepackage{color,calc}
+  \newsavebox{\ChpNumBox}
+  \definecolor{ChapBlue}{rgb}{0.00,0.65,0.65}
+  \definecolor{DarkBlue}{rgb}{0.00,0.20,0.65}
+  \definecolor{Black}{rgb}{0.00,0.00,0.00}
+  \makeatletter
+  \newcommand*{\thickhrulefill}{%
+  \leavevmode\leaders\hrule height 1\p@ \hfill \kern \z@}
+  \newcommand*\BuildChpNum[2]{%
+  \begin{tabular}[t]{@{}c@{}}
+  \makebox[0pt][c]{#1\strut} \\[.5ex]
+  \colorbox{ChapBlue}{%
+  \rule[-10em]{0pt}{0pt}%
+  \rule{1ex}{0pt}\color{black}#2\strut
+  \rule{1ex}{0pt}}%
+  \end{tabular}}
+  \makechapterstyle{BlueBox}{%
+  \renewcommand{\chapnamefont}{\large\scshape}
+  \renewcommand{\chapnumfont}{\Huge\bfseries}
+  \renewcommand{\chaptitlefont}{\raggedright\Huge\sffamily\bfseries}
+  \setlength{\beforechapskip}{20pt}
+  \setlength{\midchapskip}{26pt}
+  \setlength{\afterchapskip}{40pt}
+  \renewcommand{\printchaptername}{}
+  \renewcommand{\chapternamenum}{}
+  \renewcommand{\printchapternum}{%
+  \sbox{\ChpNumBox}{%
+  \BuildChpNum{\chapnamefont\@chapapp}%
+  {\chapnumfont\thechapter}}}
+  \renewcommand{\printchapternonum}{%
+  \sbox{\ChpNumBox}{%
+  \BuildChpNum{\chapnamefont\vphantom{\@chapapp}}%
+  {\chapnumfont\hphantom{\thechapter}}}}
+  \renewcommand{\afterchapternum}{}
+  \renewcommand{\printchaptertitle}[1]{%
+  \usebox{\ChpNumBox}\hfill
+  \parbox[t]{\hsize-\wd\ChpNumBox-1em}{%
+  \vspace{\midchapskip}%
+  \thickhrulefill\par
+  \chaptitlefont ##1\par}}%
+  }
+  \chapterstyle{BlueBox}
+  %\chapterstyle{dash}
+  %%% Creating an initial of the very first character of the content
+  \usepackage{lettrine}
+  \newcommand{\initial}[1]{
+  	\lettrine[lines=3,lhang=0.3,nindent=0em]{
+  		\color{ChapBlue}
+  		{\textsf{#1}}
+  	}{}
+  }
+  
+  %%% Title, author and date metadata
+  \usepackage{titling} % For custom titles
+  \newcommand{\HorRule}{
+  	\color{DarkBlue} % Creating a horizontal rule
+  	\rule{\linewidth}{1pt}
+  }
+  \pretitle{
+  	\vspace{-30pt} \begin{flushleft} \HorRule 
+  	\fontsize{50}{50} \usefont{OT1}{phv}{b}{n} \color{ChapBlue} \selectfont 
+  }
+  \posttitle{\par\end{flushleft}\vskip 0.5em}
+  
+  \preauthor{\begin{flushleft}\large \lineskip 0.5em \usefont{OT1}{phv}{b}{sl} \color{Black}}
+  \postauthor{\footnotesize \usefont{OT1}{phv}{m}{sl} \color{Black} 
+  	,\qquad % One could have the institution of author right here
+  	\par\end{flushleft}\HorRule
+  }
+  \newcommand{\modreq}{!}
+  \newcommand{\modquery}{?}
+  \newcommand{\modtrue}{\top}
+  \newcommand{\modfalse}{\bot}
+  \newcommand{\moderr}{\epsilon}
+  \newcommand{\modaux}{a}
+</head>
+<body>
+<h1 id="pandocgen"><span class="header-section-number">1</span> pandocgen</h1>
+<p>This is a generation framework for yielding PDF and HTML from good old Markdown files. It uses the eminent <a href="http://johnmacfarlane.net/pandoc/">Pandoc tool</a>, so the Markdown files can use Pandoc extensions to provide a slicker output, including mathematical expressions. For the pure Markdown syntax and its semantics, there is a good introduction on <a href="http://daringfireball.net/projects/markdown/syntax/">Daring Fireball</a>.</p>
+<p><strong>NOTE</strong>: for some reason, the creator of Pandoc, John MacFarlane, has not named the Pandoc Markdown extension language. I sometimes refer to it as <strong>PandocMarkdown</strong>.</p>
+<p><strong>NOTE</strong>: Pandoc is capable of translating between a host of formats, but this <strong>pandocgen</strong> project focuses on (Pandoc-)Markdown input. See the graph at the bottom of this document for all the various conversion options of Pandoc; it is quite mind-blowing. The image is from the Pandoc site and is copyrighted by John MacFarlane.</p>
+<h2 id="very-very-quick-intro"><span class="header-section-number">1.1</span> Very, Very Quick Intro…</h2>
+<ol style="list-style-type: decimal">
+<li>Add this project as a submodule git submodule add git@github.com:davber/pandocgen.git</li>
+<li>Create some beautiful Markdown file, <code>MyCoolDoc.md</code></li>
+<li>Create a Makefile like this: BASE=MyCoolDoc include pandocgen/Makefile</li>
+<li>Make space for the generated files: mkdir gen</li>
+<li>Create the PDF and HTML files: make all</li>
+</ol>
+<p>That is it! Now you have a PDF and HTML version of your Markdown document.</p>
+<h2 id="dependencies"><span class="header-section-number">1.2</span> Dependencies</h2>
+<p>There are some dependencies, though:</p>
+<ol style="list-style-type: decimal">
+<li>A Gnu <strong>make</strong> command, preferably version 3.80 or later. On most decent machines, this is already installed.</li>
+<li>LaTex, such as <a href="http://www.tug.org/texlive/">TeX Live</a>.</li>
+<li><a href="http://johnmacfarlane.net/pandoc/">Pandoc</a> — the tool actually doing the generation</li>
+</ol>
+<h2 id="using-it"><span class="header-section-number">1.3</span> Using It…</h2>
+<p>To use this framework, there are two paths:</p>
+<ol style="list-style-type: decimal">
+<li>Include the provided Makefile in your own Makefile, after a section where you specify a few custom parameters, as defined in the Custom Parameters section.</li>
+<li>Set the custom parameters as environment variables and use the provided Makefile as is.</li>
+</ol>
+<h2 id="building-targets"><span class="header-section-number">1.4</span> Building Targets</h2>
+<p>All target versions of the Markdown document are generated in a <code>gen</code> directory relative the current working directory. As a convenience, this project contains such a directory in case you are running <code>make</code> from there.</p>
+<p>Each of the target formats has a corresponding make target, so you can issue one of:</p>
+<pre><code>make pdf
+make html
+make tex</code></pre>
+<p>There is also a universal target, which builds all formats:</p>
+<pre><code>make all</code></pre>
+<h2 id="customer-parameters"><span class="header-section-number">1.5</span> Customer Parameters</h2>
+<p>These are the parameters you can set – either via a initial section in an embedding Makefile or as environment variables:</p>
+<ul>
+<li><code>BASE</code> - that is the name of the Markdown document, <strong>without</strong> suffix, such as <code>MyCoolDoc</code>, which will then generate <code>MyCoolDoc.pdf</code>, <code>MyCoolDoc.html</code> and <code>MyCoolDoc.tex</code> in the <code>gen</code> directory. <strong>MANDATORY</strong></li>
+<li><code>RES_IN</code> - the input files for resources, such as images, needed by the document. This often includes Graphviz Dot files or other input formats for PDF- and PNG-based images. <strong>OPTIONAL</strong></li>
+<li><code>RES_OUT</code> - the corresponding generated resource files, which are often PDF and PNG files. <strong>OPTIONAL</strong>.</li>
+<li><code>RES_GEN</code> - the full command to generate the <code>RES_OUT</code> files from the <code>RES_IN</code> files. <strong>OPTIONAL</strong></li>
+</ul>
+<p><strong>NOTE</strong>: so there is only <strong>one</strong> mandatory parameter to set, and that is <code>BASE</code>.</p>
+<p><strong>NOTE</strong>: the default behavior, described above, actually allows you to include resources in an input-ready format, such as raw PNG and PDF files, by merely setting the <code>RES_OUT</code> to those files and let the other two resource-related parameters be. That will translate into a no-op for that make step.</p>
+<h2 id="helper-files"><span class="header-section-number">1.6</span> Helper Files</h2>
+<p>The helper files reside in the <code>input</code> directory.</p>
+<p>The helper files are:</p>
+<ul>
+<li><code>my-template.latex</code> - this is the main template for LaTeX generation and, indirectly, for PDF generation. It uses some parameters that can be set from command line — and is actually set by the provided Makefile — such as <code>docuemntclass</code>, which the Makefile sets to <code>memoir</code>. See the Makefile for some of those parameters used.</li>
+<li><code>mytitle.tex</code> - this is the template for the title page, for LaTeX (and PDF…)</li>
+<li><code>mychapter.tex</code> - specifies the look of chapter headings for LaTeX (and PDF…)</li>
+<li><code>macros.tex</code> - some TeX macros. <strong>NOTE</strong> these macros are actually expanded by Pandoc itself in the case of non-TeX-based generation — such as HTML — so one can have shortcuts or other macros even for HTML.</li>
+</ul>
+<h2 id="the-completely-connected-world-of-pandoc"><span class="header-section-number">1.7</span> The Completely Connected World Of Pandoc</h2>
+<p>Can you count the number of translations possible? …</p>
+<div class="figure">
+<img src="rez/diagram.png" alt="Pandoc Format Conversions" /><p class="caption">Pandoc Format Conversions</p>
+</div>
+<p>Again: Image copyright John MacFarlane</p>
+</body>
+</html>

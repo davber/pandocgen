@@ -30,11 +30,23 @@ mind-blowing. The image is from the Pandoc site and is copyrighted by John MacFa
 
 That is it! Now you have a PDF and HTML version of your Markdown document.
 
-There are some dependencies, though.
+For a quick generation, you can actually generate this README file --- people always
+enjoy others eating their own dog foos --- by
+
+	make --file sample.mk
+
+where `sample.mk` is this short make file
+
+	BASE=README
+	RES_OUT=rez/diagram.png
+	include Makefile
+	
+This will generate output files in the `gen` directory. They are also uploaded to this
+Wiki, as a [PDF file](gen/README.pdf) and [HTML file](gen/README.html).
 
 ## Dependencies
 
-You need to have these items installed:
+There are some dependencies, though:
 
 1. A Gnu **make** command, preferably version 3.80 or later. On most decent machines,
    this is already installed.
@@ -109,6 +121,6 @@ The helper files are:
 
 Can you count the number of translations possible? ...
 
-![Pandoc Format Conversions](http://johnmacfarlane.net/pandoc/diagram.png)
+![Pandoc Format Conversions](rez/diagram.png)
 
 Again: Image copyright John MacFarlane
