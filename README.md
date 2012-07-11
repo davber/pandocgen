@@ -18,14 +18,18 @@ mind-blowing. The image is from the Pandoc site and is copyrighted by John MacFa
 ## Very, Very Quick Intro...
 
 1. Add this project as a submodule
+
 		git submodule add git@github.com:davber/pandocgen.git
 1. Create some beautiful Markdown file, `MyCoolDoc.md`
 1. Create a Makefile like this:
+
 		BASE=MyCoolDoc
 		include pandocgen/Makefile
 1. Make space for the generated files:
+
 		mkdir gen
 1. Create the PDF and HTML files:
+
 		make all
 
 That is it! Now you have a PDF and HTML version of your Markdown document.
