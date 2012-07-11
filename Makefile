@@ -52,9 +52,9 @@ TEX=gen/$(BASE).tex
 HTML=gen/$(BASE).html
 DOC=$(BASE).md
 INPUT=$(DOC) $(RES_OUT) $(TEMPLATES)
-COM_OPTS=-V documentclass=memoir -V classopt=oneside -H $(AUX_IN)/mychapter.tex -H $(AUX_IN)/mytitle.tex --smart -N -H $(AUX_IN)/macros.tex
-TEX_OPTS=$(COM_OPTS) --template=$(AUX_IN)/my-template
-HTML_OPTS=$(COM_OPTS)
+COM_OPTS ?= -N
+TEX_OPTS ?= --template=$(AUX_IN)/my-template -V documentclass=memoir -V classopt=oneside -H $(AUX_IN)/mychapter.tex -H $(AUX_IN)/mytitle.tex --smart -H $(AUX_IN)/macros.tex
+HTML_OPTS ?= 
 
 all: pdf tex html
 
@@ -64,13 +64,13 @@ html: $(HTML)
 
 
 $(PDF): $(INPUT)
-	pandoc $(TEX_OPTS) -o $(PDF) $(DOC)
+	pandoc $(COM_OPTS) $(TEX_OPTS) -o $(PDF) $(DOC)
 
 $(HTML): $(INPUT)
-	pandoc $(HTML_OPTS) -o $(HTML) $(DOC)
+	pandoc $(COM_OPTS) $(HTML_OPTS) -o $(HTML) $(DOC)
 
 $(TEX): $(INPUT)
-	pandoc $(TEX_OPTS) -o $(TEX) $(DOC)
+	pandoc $(COM_OPTS) $(TEX_OPTS) -o $(TEX) $(DOC)
 
 $(RES_OUT): $(RES_IN)
 	$(RES_GEN)
