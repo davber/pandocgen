@@ -153,6 +153,8 @@ an image (**and** be sure to use a trailing slash in the browser):
 So, we have to use two link formats in this document, so do not be alarmed if you
 see some garbage output next to an image.
 
+**UPDATE**: the images do not work at all on GitHub, no matter what is attempted.
+
 ## The Completely Connected World Of Pandoc
 
 Can you count the number of translations possible? ...
