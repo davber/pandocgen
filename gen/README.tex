@@ -155,6 +155,9 @@ for all the various conversion options of Pandoc; it is quite
 mind-blowing. The image is from the Pandoc site and is copyrighted by
 John MacFarlane.
 
+There are some current issues relative links to resources. See the
+Issues section below.
+
 \section{Very, Very Quick Intro\ldots{}}
 
 \begin{enumerate}[1.]
@@ -219,7 +222,7 @@ There are some dependencies, though:
   LaTex, such as \href{http://www.tug.org/texlive/}{TeX Live}.
 \item
   \href{http://johnmacfarlane.net/pandoc/}{Pandoc} --- the tool actually
-  doing the generation
+  performing the generation
 \end{enumerate}
 \section{Using It\ldots{}}
 
@@ -312,13 +315,42 @@ The helper files are:
   generation --- such as HTML --- so one can have shortcuts or other
   macros even for HTML.
 \end{itemize}
+\section{Issues}
+
+The way to link to relative resources or to include images in general is
+confusing at best in the Markdown world. This README file, for instance
+is trying hard to be Markdown, GitHub Markdown and Pandoc Markdown
+friendly, so it can render well on GitHub while generating PDF and HTML
+that will reference relative resources properly. GitHub's Gollum can
+sometimes change its behavior suddenly as how to interpret simple
+relative paths, and make them not relative the project --- which they
+\textbf{should} be --- but rather relative the top directory of the
+GitHub user! So, in order for the diagram to show up properly, I had to
+use both the GitHub Markdown syntax of
+
+\begin{verbatim}
+[[rez/diagram.png]]
+\end{verbatim}
+and the syntax expected by Pandoc to generate proper PDF
+
+\begin{verbatim}
+![Pandoc Format Conversions](rez/diagram.png)
+\end{verbatim}
+Also be aware of the intricacies of opening HTML files from the
+\texttt{gen} directory vs opening them from the top directory. For
+instance, the links and images are relative the top directory of this
+project, so in order for relative links to work, you must copy the
+\texttt{gen/README.html} to the top directory.
+
 \section{The Completely Connected World Of Pandoc}
 
 Can you count the number of translations possible? \ldots{}
 
+{[}{[}rez/diagram.png{]}{]}
+
 \begin{figure}[htbp]
 \centering
-\includegraphics{./rez/diagram.png}
+\includegraphics{rez/diagram.png}
 \caption{Pandoc Format Conversions}
 \end{figure}
 

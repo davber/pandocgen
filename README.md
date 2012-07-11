@@ -15,6 +15,8 @@ Pandoc Markdown extension language. I sometimes refer to it as **PandocMarkdown*
 of this document for all the various conversion options of Pandoc; it is quite
 mind-blowing. The image is from the Pandoc site and is copyrighted by John MacFarlane.
 
+There are some current issues relative links to resources. See the Issues section below.
+
 ## Very, Very Quick Intro...
 
 1. Add this project as a submodule
@@ -123,9 +125,35 @@ The helper files are:
   itself in the case of non-TeX-based generation --- such as HTML --- so one can have
   shortcuts or other macros even for HTML.
 
+## Issues
+
+The way to link to relative resources or to include images in general is confusing
+at best in the Markdown world. This README file, for instance is trying hard to
+be Markdown, GitHub Markdown and Pandoc Markdown friendly, so it can render well
+on GitHub while generating PDF and HTML that will reference relative resources
+properly. GitHub's Gollum can sometimes change its behavior suddenly as how to
+interpret simple relative paths, and make them not relative the project ---
+which they **should** be --- but rather relative the top directory of the GitHub
+user! So, in order for the diagram to show up properly, I had to use both the
+GitHub Markdown syntax of
+	
+	[[rez/diagram.png]]
+
+and the syntax expected by Pandoc to generate proper PDF
+	
+	![Pandoc Format Conversions](rez/diagram.png)
+
+Also be aware of the intricacies of opening HTML files from the `gen` directory vs
+opening them from the top directory. For instance, the links and images are relative
+the top directory of this project, so in order for relative links to work, you must
+copy the `gen/README.html` to the top directory.
+
+
 ## The Completely Connected World Of Pandoc
 
 Can you count the number of translations possible? ...
+
+[[rez/diagram.png]]
 
 ![Pandoc Format Conversions](rez/diagram.png)
 
