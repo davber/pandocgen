@@ -107,7 +107,7 @@ include pandocgen/Makefile</code></pre></li>
 <pre><code>make --file sample.mk</code></pre>
 <p>where <code>sample.mk</code> is this short make file</p>
 <pre><code>BASE=README
-RES_OUT=rez/diagram.png
+RES_OUT=diagram.png
 include Makefile</code></pre>
 <p>This will generate output files in the <code>gen</code> directory. They are also uploaded to this Wiki, as a <a href="./gen/README.pdf">PDF file</a> and <a href="./gen/README.html">HTML file</a>.</p>
 <h2 id="dependencies"><span class="header-section-number">1.2</span> Dependencies</h2>
@@ -151,16 +151,11 @@ make tex</code></pre>
 <li><code>macros.tex</code> - some TeX macros. <strong>NOTE</strong> these macros are actually expanded by Pandoc itself in the case of non-TeX-based generation — such as HTML — so one can have shortcuts or other macros even for HTML.</li>
 </ul>
 <h2 id="issues"><span class="header-section-number">1.7</span> Issues</h2>
-<p>The way to link to relative resources or to include images in general is confusing at best in the Markdown world. This README file, for instance is trying hard to be Markdown, GitHub Markdown and Pandoc Markdown friendly, so it can render well on GitHub while generating PDF and HTML that will reference relative resources properly. GitHub’s Gollum can sometimes change its behavior suddenly as how to interpret simple relative paths, and make them not relative the project — which they <strong>should</strong> be — but rather relative the top directory of the GitHub user! So, in order for the diagram to show up properly, I had to use both the GitHub Markdown syntax of</p>
-<pre><code>[[rez/diagram.png]]</code></pre>
-<p>and the syntax expected by Pandoc to generate proper PDF</p>
-<pre><code>![Pandoc Format Conversions](rez/diagram.png)</code></pre>
-<p>Also be aware of the intricacies of opening HTML files from the <code>gen</code> directory vs opening them from the top directory. For instance, the links and images are relative the top directory of this project, so in order for relative links to work, you must copy the <code>gen/README.html</code> to the top directory.</p>
+<p>Be aware of the intricacies of opening HTML files from the <code>gen</code> directory vs opening them from the top directory. For instance, the links and images are relative the top directory of this project, so in order for relative links to work, you must copy the <code>gen/README.html</code> to the top directory.</p>
 <h2 id="the-completely-connected-world-of-pandoc"><span class="header-section-number">1.8</span> The Completely Connected World Of Pandoc</h2>
 <p>Can you count the number of translations possible? …</p>
-<p>[[rez/diagram.png]]</p>
 <div class="figure">
-<img src="rez/diagram.png" alt="Pandoc Format Conversions" /><p class="caption">Pandoc Format Conversions</p>
+<img src="diagram.png" alt="Pandoc Format Conversions" /><p class="caption">Pandoc Format Conversions</p>
 </div>
 <p>Again: Image copyright John MacFarlane</p>
 </body>

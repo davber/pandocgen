@@ -45,7 +45,7 @@ enjoy others eating their own dog food (or actually others eating pet food in ge
 where `sample.mk` is this short make file
 
 	BASE=README
-	RES_OUT=rez/diagram.png
+	RES_OUT=diagram.png
 	include Makefile
 	
 This will generate output files in the `gen` directory. They are also uploaded to this
@@ -127,23 +127,7 @@ The helper files are:
 
 ## Issues
 
-The way to link to relative resources or to include images in general is confusing
-at best in the Markdown world. This README file, for instance is trying hard to
-be Markdown, GitHub Markdown and Pandoc Markdown friendly, so it can render well
-on GitHub while generating PDF and HTML that will reference relative resources
-properly. GitHub's Gollum can sometimes change its behavior suddenly as how to
-interpret simple relative paths, and make them not relative the project ---
-which they **should** be --- but rather relative the top directory of the GitHub
-user! So, in order for the diagram to show up properly, I had to use both the
-relative and "absolute" path, as
-		
-	![Pandoc Format Conversions](rez/diagram.png)
-	
-and
-
-	![Pandoc Format Conversions](pandocgen/rez/diagram.png)
-
-Also be aware of the intricacies of opening HTML files from the `gen` directory vs
+Be aware of the intricacies of opening HTML files from the `gen` directory vs
 opening them from the top directory. For instance, the links and images are relative
 the top directory of this project, so in order for relative links to work, you must
 copy the `gen/README.html` to the top directory.
@@ -153,8 +137,6 @@ copy the `gen/README.html` to the top directory.
 
 Can you count the number of translations possible? ...
 
-![Pandoc Format Conversions](pandocgen/rez/diagram.png)
-
-![Pandoc Format Conversions](rez/diagram.png)
+![Pandoc Format Conversions](diagram.png)
 
 Again: Image copyright John MacFarlane

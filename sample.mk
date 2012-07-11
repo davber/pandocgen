@@ -1,3 +1,3 @@
 BASE=README
-RES_OUT=rez/diagram.png
+RES_OUT=diagram.png
 include Makefile
