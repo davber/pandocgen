@@ -45,16 +45,13 @@
 # this Makefile, which is done in this roundabout way:
 ROOT_REL=$(dir $(lastword $(MAKEFILE_LIST)))
 
-default:
-	@echo makefile_list = $(MAKEFILE_LIST)
-	@echo root_rel = $(ROOT_REL)
-
 AUX_IN=$(ROOT_REL)input
+TEMPLATES=$(AUX_IN)/mychapter.tex $(AUX_IN)/mytitle.tex $(AUX_IN)/my-template.latex $(AUX_IN)/macros.tex
 PDF=gen/$(BASE).pdf
 TEX=gen/$(BASE).tex
 HTML=gen/$(BASE).html
 DOC=$(BASE).md
-INPUT=$(DOC) $(RES_OUT)
+INPUT=$(DOC) $(RES_OUT) $(TEMPLATES)
 COM_OPTS=-V documentclass=memoir -V classopt=oneside -H $(AUX_IN)/mychapter.tex -H $(AUX_IN)/mytitle.tex --smart -N -H $(AUX_IN)/macros.tex
 TEX_OPTS=$(COM_OPTS) --template=$(AUX_IN)/my-template
 HTML_OPTS=$(COM_OPTS)
