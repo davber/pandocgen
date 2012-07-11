@@ -135,20 +135,13 @@ properly. GitHub's Gollum can sometimes change its behavior suddenly as how to
 interpret simple relative paths, and make them not relative the project ---
 which they **should** be --- but rather relative the top directory of the GitHub
 user! So, in order for the diagram to show up properly, I had to use both the
-GitHub Markdown syntax of
-	
-	[[rez/diagram.png]]
-
-and the syntax expected by Pandoc to generate proper PDF
-	
+relative and "absolute" path, as
+		
 	![Pandoc Format Conversions](rez/diagram.png)
 	
-**AND**, because of the GitHub/Gollum bug of changing the interpretation of relative
-paths in links and images, I actually had to provide that same image link as
+and
 
-	[[pandocgen/rez/diagram.png]]
-	
-**THREE** links to get (at least) one to render properly. Wow...
+	![Pandoc Format Conversions](pandocgen/rez/diagram.png)
 
 Also be aware of the intricacies of opening HTML files from the `gen` directory vs
 opening them from the top directory. For instance, the links and images are relative
@@ -160,9 +153,7 @@ copy the `gen/README.html` to the top directory.
 
 Can you count the number of translations possible? ...
 
-[[rez/diagram.png]]
-
-[[pandocgen/rez/diagram.png]]
+![Pandoc Format Conversions](pandocgen/rez/diagram.png)
 
 ![Pandoc Format Conversions](rez/diagram.png)
 
