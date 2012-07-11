@@ -40,13 +40,23 @@
 # RES_OUT=rez/cool_image.pdf
 # RES_GEN=dot -o $(RES_OUT) $(RES_IN)
 
+#
+# We make sure that the auxiliary input we need is relative
+# this Makefile, which is done in this roundabout way:
+ROOT_REL=$(dir $(lastword $(MAKEFILE_LIST)))
+
+default:
+	@echo makefile_list = $(MAKEFILE_LIST)
+	@echo root_rel = $(ROOT_REL)
+
+AUX_IN=$(ROOT_REL)input
 PDF=gen/$(BASE).pdf
 TEX=gen/$(BASE).tex
 HTML=gen/$(BASE).html
 DOC=$(BASE).md
 INPUT=$(DOC) $(RES_OUT)
-COM_OPTS=-V documentclass=memoir -V classopt=oneside -H input/mychapter.tex -H input/mytitle.tex --smart -N -H input/macros.tex
-TEX_OPTS=$(COM_OPTS) --template=input/my-template
+COM_OPTS=-V documentclass=memoir -V classopt=oneside -H $(AUX_IN)/mychapter.tex -H $(AUX_IN)/mytitle.tex --smart -N -H $(AUX_IN)/macros.tex
+TEX_OPTS=$(COM_OPTS) --template=$(AUX_IN)/my-template
 HTML_OPTS=$(COM_OPTS)
 
 all: pdf tex html
