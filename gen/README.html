@@ -90,13 +90,25 @@
 <p><strong>NOTE</strong>: Pandoc is capable of translating between a host of formats, but this <strong>pandocgen</strong> project focuses on (Pandoc-)Markdown input. See the graph at the bottom of this document for all the various conversion options of Pandoc; it is quite mind-blowing. The image is from the Pandoc site and is copyrighted by John MacFarlane.</p>
 <h2 id="very-very-quick-intro"><span class="header-section-number">1.1</span> Very, Very Quick Intro…</h2>
 <ol style="list-style-type: decimal">
-<li>Add this project as a submodule git submodule add git@github.com:davber/pandocgen.git</li>
+<li><p>Add this project as a submodule</p>
+<pre><code>git submodule add git@github.com:davber/pandocgen.git</code></pre></li>
 <li>Create some beautiful Markdown file, <code>MyCoolDoc.md</code></li>
-<li>Create a Makefile like this: BASE=MyCoolDoc include pandocgen/Makefile</li>
-<li>Make space for the generated files: mkdir gen</li>
-<li>Create the PDF and HTML files: make all</li>
+<li><p>Create a Makefile like this:</p>
+<pre><code>BASE=MyCoolDoc
+include pandocgen/Makefile</code></pre></li>
+<li><p>Make space for the generated files:</p>
+<pre><code>mkdir gen</code></pre></li>
+<li><p>Create the PDF and HTML files:</p>
+<pre><code>make all</code></pre></li>
 </ol>
 <p>That is it! Now you have a PDF and HTML version of your Markdown document.</p>
+<p>For a quick generation, you can actually generate this README file — people always enjoy others eating their own dog food (or actually others eating pet food in general…) — by</p>
+<pre><code>make --file sample.mk</code></pre>
+<p>where <code>sample.mk</code> is this short make file</p>
+<pre><code>BASE=README
+RES_OUT=rez/diagram.png
+include Makefile</code></pre>
+<p>This will generate output files in the <code>gen</code> directory. They are also uploaded to this Wiki, as a <a href="./gen/README.pdf">PDF file</a> and <a href="./gen/README.html">HTML file</a>.</p>
 <h2 id="dependencies"><span class="header-section-number">1.2</span> Dependencies</h2>
 <p>There are some dependencies, though:</p>
 <ol style="list-style-type: decimal">
@@ -140,7 +152,7 @@ make tex</code></pre>
 <h2 id="the-completely-connected-world-of-pandoc"><span class="header-section-number">1.7</span> The Completely Connected World Of Pandoc</h2>
 <p>Can you count the number of translations possible? …</p>
 <div class="figure">
-<img src="rez/diagram.png" alt="Pandoc Format Conversions" /><p class="caption">Pandoc Format Conversions</p>
+<img src="./rez/diagram.png" alt="Pandoc Format Conversions" /><p class="caption">Pandoc Format Conversions</p>
 </div>
 <p>Again: Image copyright John MacFarlane</p>
 </body>

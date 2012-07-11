@@ -159,19 +159,53 @@ John MacFarlane.
 
 \begin{enumerate}[1.]
 \item
-  Add this project as a submodule git submodule add
-  git@github.com:davber/pandocgen.git
+  Add this project as a submodule
+
+\begin{verbatim}
+git submodule add git@github.com:davber/pandocgen.git
+\end{verbatim}
 \item
   Create some beautiful Markdown file, \texttt{MyCoolDoc.md}
 \item
-  Create a Makefile like this: BASE=MyCoolDoc include pandocgen/Makefile
+  Create a Makefile like this:
+
+\begin{verbatim}
+BASE=MyCoolDoc
+include pandocgen/Makefile
+\end{verbatim}
 \item
-  Make space for the generated files: mkdir gen
+  Make space for the generated files:
+
+\begin{verbatim}
+mkdir gen
+\end{verbatim}
 \item
-  Create the PDF and HTML files: make all
+  Create the PDF and HTML files:
+
+\begin{verbatim}
+make all
+\end{verbatim}
 \end{enumerate}
 That is it! Now you have a PDF and HTML version of your Markdown
 document.
+
+For a quick generation, you can actually generate this README file ---
+people always enjoy others eating their own dog food (or actually others
+eating pet food in general\ldots{}) --- by
+
+\begin{verbatim}
+make --file sample.mk
+\end{verbatim}
+where \texttt{sample.mk} is this short make file
+
+\begin{verbatim}
+BASE=README
+RES_OUT=rez/diagram.png
+include Makefile
+\end{verbatim}
+This will generate output files in the \texttt{gen} directory. They are
+also uploaded to this Wiki, as a \href{./gen/README.pdf}{PDF file} and
+\href{./gen/README.html}{HTML file}.
 
 \section{Dependencies}
 
@@ -284,7 +318,7 @@ Can you count the number of translations possible? \ldots{}
 
 \begin{figure}[htbp]
 \centering
-\includegraphics{rez/diagram.png}
+\includegraphics{./rez/diagram.png}
 \caption{Pandoc Format Conversions}
 \end{figure}
 

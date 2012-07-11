@@ -56,7 +56,8 @@ There are some dependencies, though:
 1. A Gnu **make** command, preferably version 3.80 or later. On most decent machines,
    this is already installed.
 1. LaTex, such as [TeX Live](http://www.tug.org/texlive/).
-1. [Pandoc](http://johnmacfarlane.net/pandoc/) --- the tool actually doing the generation
+1. [Pandoc](http://johnmacfarlane.net/pandoc/) --- the tool actually performing the
+   generation
 
 ## Using It...
 
@@ -126,6 +127,6 @@ The helper files are:
 
 Can you count the number of translations possible? ...
 
-![Pandoc Format Conversions](./rez/diagram.png)
+![Pandoc Format Conversions](rez/diagram.png)
 
 Again: Image copyright John MacFarlane
