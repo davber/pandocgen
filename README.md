@@ -31,7 +31,8 @@ mind-blowing. The image is from the Pandoc site and is copyrighted by John MacFa
 That is it! Now you have a PDF and HTML version of your Markdown document.
 
 For a quick generation, you can actually generate this README file --- people always
-enjoy others eating their own dog foos --- by
+enjoy others eating their own dog food (or actually others eating pet food in general...)
+--- by
 
 	make --file sample.mk
 
