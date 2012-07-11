@@ -1,5 +1,8 @@
 # pandocgen
 
+**NOTE**: in order to see the images on this page and to have links working, be sure to
+add a trailing `/` to the URL in the browser! Yep, a GitHub/Gollum bug.
+
 This is a generation framework for yielding PDF and HTML from good old Markdown files. It
 uses the eminent [Pandoc tool](http://johnmacfarlane.net/pandoc/), so the Markdown files
 can use Pandoc extensions to provide a slicker
@@ -132,11 +135,30 @@ opening them from the top directory. For instance, the links and images are rela
 the top directory of this project, so in order for relative links to work, you must
 copy the `gen/README.html` to the top directory.
 
+There is also a bug in GitHub/Gollum related to how relative paths are interpreted
+in links and embeddings of images. It **sometimes** changes behavior to put the relative
+path as relative to the user's base URL, instead of the project. They would probably argue
+that it is due to the page being rendered as the home page, which has no relative path,
+so the relative path then become relative the next step above that, blah, blah.
+The bottom line is: one cannot include relative references using the normal Markdown
+syntax in Markdown pages that GitHub/Gollum happen to map from the top of the project.
+
+A "solution" is to add a trailing slash when looking at this "home" page, for instance.
+That will at least bring us to the next GitHub/Gollum problem: that of a **valid**
+link not fetching a resource... So... one has to use a GitHub-specific form of including
+an image (**and** be sure to use a trailing slash in the browser):
+
+	[[rez/diagram.png]]
+	
+So, we have to use two link formats in this document, so do not be alarmed if you
+see some garbage output next to an image.
 
 ## The Completely Connected World Of Pandoc
 
 Can you count the number of translations possible? ...
 
-![Pandoc Format Conversions](diagram.png)
+[[rez/diagram.png]]
+
+![Pandoc Format Conversions](rez/diagram.png)
 
 Again: Image copyright John MacFarlane

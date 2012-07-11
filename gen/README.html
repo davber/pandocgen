@@ -85,6 +85,7 @@
 </head>
 <body>
 <h1 id="pandocgen"><span class="header-section-number">1</span> pandocgen</h1>
+<p><strong>NOTE</strong>: in order to see the images on this page and to have links working, be sure to add a trailing <code>/</code> to the URL in the browser! Yep, a GitHub/Gollum bug.</p>
 <p>This is a generation framework for yielding PDF and HTML from good old Markdown files. It uses the eminent <a href="http://johnmacfarlane.net/pandoc/">Pandoc tool</a>, so the Markdown files can use Pandoc extensions to provide a slicker output, including mathematical expressions. For the pure Markdown syntax and its semantics, there is a good introduction on <a href="http://daringfireball.net/projects/markdown/syntax/">Daring Fireball</a>.</p>
 <p><strong>NOTE</strong>: for some reason, the creator of Pandoc, John MacFarlane, has not named the Pandoc Markdown extension language. I sometimes refer to it as <strong>PandocMarkdown</strong>.</p>
 <p><strong>NOTE</strong>: Pandoc is capable of translating between a host of formats, but this <strong>pandocgen</strong> project focuses on (Pandoc-)Markdown input. See the graph at the bottom of this document for all the various conversion options of Pandoc; it is quite mind-blowing. The image is from the Pandoc site and is copyrighted by John MacFarlane.</p>
@@ -152,10 +153,14 @@ make tex</code></pre>
 </ul>
 <h2 id="issues"><span class="header-section-number">1.7</span> Issues</h2>
 <p>Be aware of the intricacies of opening HTML files from the <code>gen</code> directory vs opening them from the top directory. For instance, the links and images are relative the top directory of this project, so in order for relative links to work, you must copy the <code>gen/README.html</code> to the top directory.</p>
+<p>There is also a bug in GitHub/Gollum related to how relative paths are interpreted in links and embeddings of images. It <strong>sometimes</strong> changes behavior to put the relative path as relative to the user’s base URL, instead of the project. They would probably argue that it is due to the page being rendered as the home page, which has no relative path, so the relative path then become relative the next step above that, blah, blah. The bottom line is: one cannot include relative references using the normal Markdown syntax in Markdown pages that GitHub/Gollum happen to map from the top of the project.</p>
+<p>A “solution” is to add a trailing slash when looking at this “home” page, for instance. That will at least bring us to the next GitHub/Gollum problem: that of a <strong>valid</strong> link not fetching a resource… So… one has to use a GitHub-specific form of including an image (<strong>and</strong> be sure to use a trailing slash in the browser):</p>
+<pre><code>[[rez/diagram.png]]</code></pre>
 <h2 id="the-completely-connected-world-of-pandoc"><span class="header-section-number">1.8</span> The Completely Connected World Of Pandoc</h2>
 <p>Can you count the number of translations possible? …</p>
+<p>[[rez/diagram.png]]</p>
 <div class="figure">
-<img src="diagram.png" alt="Pandoc Format Conversions" /><p class="caption">Pandoc Format Conversions</p>
+<img src="rez/diagram.png" alt="Pandoc Format Conversions" /><p class="caption">Pandoc Format Conversions</p>
 </div>
 <p>Again: Image copyright John MacFarlane</p>
 </body>
