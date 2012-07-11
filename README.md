@@ -18,15 +18,15 @@ mind-blowing. The image is from the Pandoc site and is copyrighted by John MacFa
 ## Very, Very Quick Intro...
 
 1. Add this project as a submodule
-   `git submodule add git@github.com:davber/pandocgen.git`
+		git submodule add git@github.com:davber/pandocgen.git
 1. Create some beautiful Markdown file, `MyCoolDoc.md`
 1. Create a Makefile like this:
->  BASE=MyCoolDoc
->  include pandocgen/Makefile
+		BASE=MyCoolDoc
+		include pandocgen/Makefile
 1. Make space for the generated files:
->  mkdir gen
+		mkdir gen
 1. Create the PDF and HTML files:
->  make all
+		make all
 
 That is it! Now you have a PDF and HTML version of your Markdown document.
 
@@ -36,7 +36,7 @@ There are some dependencies, though.
 
 You need to have these items installed:
 
-1. A Gnu `make` command, preferably version 3.80 or later. On most decent machines,
+1. A Gnu **make** command, preferably version 3.80 or later. On most decent machines,
    this is already installed.
 1. LaTex, such as [TeX Live](http://www.tug.org/texlive/).
 1. [Pandoc](http://johnmacfarlane.net/pandoc/) --- the tool actually doing the generation
@@ -45,10 +45,10 @@ You need to have these items installed:
 
 To use this framework, there are two paths:
 
-1. Include the provided `Makefile` in your own Makefile, after a section where you
+1. Include the provided Makefile in your own Makefile, after a section where you
    specify a few custom parameters, as defined in the Custom Parameters section.
-2. Set the custom parameters as environment variables and use the provided `Makefile`
-   as is.   
+2. Set the custom parameters as environment variables and use the provided Makefile
+   as is.
    
 ## Building Targets
 
@@ -58,13 +58,13 @@ a directory in case you are running `make` from there.
 
 Each of the target formats has a corresponding make target, so you can issue one of:
 
->	make pdf
->	make html
->	make tex
+	make pdf
+	make html
+	make tex
 
 There is also a universal target, which builds all formats:
 
->	make all
+	make all
 
 ## Customer Parameters
 
@@ -75,18 +75,18 @@ Makefile or as environment variables:
   `MyCoolDoc`, which will then generate `MyCoolDoc.pdf`, `MyCoolDoc.html` and
   `MyCoolDoc.tex` in the `gen` directory. **MANDATORY**
 * `RES_IN` - the input files for resources, such as images, needed by the document.
-   This often includes `dot` files or other input formats for `pdf`- and `png`-based
+   This often includes Graphviz Dot files or other input formats for PDF- and PNG-based
    images. **OPTIONAL**
-* `RES_OUT` - the corresponding generated resource files, which are often `pdf` and
-   `png` files. **OPTIONAL** and will **DEFAULT** to `RES_IN` if not provided!
+* `RES_OUT` - the corresponding generated resource files, which are often PDF and
+   PNG files. **OPTIONAL**.
 * `RES_GEN` - the full command to generate the `RES_OUT` files from the `RES_IN` files.
    **OPTIONAL**
    
 **NOTE**: so there is only **one** mandatory parameter to set, and that is `BASE`.
 
 **NOTE**: the default behavior, described above, actually allows you to include
-resources in an input-ready format, such as raw `png` and `pdf` files, by merely
-setting the `RES_IN` to those files and let the other two resource-related parameters
+resources in an input-ready format, such as raw PNG and PDF files, by merely
+setting the `RES_OUT` to those files and let the other two resource-related parameters
 be. That will translate into a no-op for that make step.
 
 ## Helper Files
@@ -97,8 +97,8 @@ The helper files are:
 
 * `my-template.latex` - this is the main template for LaTeX generation and, indirectly,
   for PDF generation. It uses some parameters that can be set from command line ---
-  and is actually set by the provided `Makefile` --- such as `docuemntclass`, which
-  the `Makefile` sets to `memoir`. See the `Makefile` for some of those parameters used.
+  and is actually set by the provided Makefile --- such as `docuemntclass`, which
+  the Makefile sets to `memoir`. See the Makefile for some of those parameters used.
 * `mytitle.tex` - this is the template for the title page, for LaTeX (and PDF...)
 * `mychapter.tex` - specifies the look of chapter headings for LaTeX (and PDF...)
 * `macros.tex` - some TeX macros. **NOTE** these macros are actually expanded by Pandoc
@@ -110,3 +110,5 @@ The helper files are:
 Can you count the number of translations possible? ...
 
 ![Pandoc Format Conversions](http://johnmacfarlane.net/pandoc/diagram.png)
+
+Again: Image copyright John MacFarlane
