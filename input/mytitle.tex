@@ -1,0 +1,26 @@
+%%% Creating an initial of the very first character of the content
+\usepackage{lettrine}
+\newcommand{\initial}[1]{
+	\lettrine[lines=3,lhang=0.3,nindent=0em]{
+		\color{ChapBlue}
+		{\textsf{#1}}
+	}{}
+}
+
+%%% Title, author and date metadata
+\usepackage{titling} % For custom titles
+\newcommand{\HorRule}{
+	\color{DarkBlue} % Creating a horizontal rule
+	\rule{\linewidth}{1pt}
+}
+\pretitle{
+	\vspace{-30pt} \begin{flushleft} \HorRule 
+	\fontsize{50}{50} \usefont{OT1}{phv}{b}{n} \color{ChapBlue} \selectfont 
+}
+\posttitle{\par\end{flushleft}\vskip 0.5em}
+
+\preauthor{\begin{flushleft}\large \lineskip 0.5em \usefont{OT1}{phv}{b}{sl} \color{Black}}
+\postauthor{\footnotesize \usefont{OT1}{phv}{m}{sl} \color{Black} 
+	,\qquad Victor1 Pte Ltd % Institution of author
+	\par\end{flushleft}\HorRule
+}
