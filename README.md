@@ -3,13 +3,17 @@
 This is a generation framework for yielding PDF and HTML from good old Markdown files. It
 uses the eminent [Pandoc tool](http://johnmacfarlane.net/pandoc/), so the Markdown files
 can use Pandoc extensions to provide a slicker
-output, including mathematical expressions.
+output, including mathematical expressions. For the pure Markdown syntax and its
+semantics, there is a good introduction on
+[Daring Fireball](http://daringfireball.net/projects/markdown/syntax/).
 
 **NOTE**: for some reason, the creator of Pandoc, John MacFarlane, has not named the
 Pandoc Markdown extension language. I sometimes refer to it as **PandocMarkdown**.
 
 **NOTE**: Pandoc is capable of translating between a host of formats, but this
-**pandocgen** project focuses on (Pandoc-)Markdown input.
+**pandocgen** project focuses on (Pandoc-)Markdown input. See the graph at the bottom
+of this document for all the various conversion options of Pandoc; it is quite
+mind-blowing. The image is from the Pandoc site and is copyrighted by John MacFarlane.
 
 ## Very, Very Quick Intro...
 
@@ -100,3 +104,9 @@ The helper files are:
 * `macros.tex` - some TeX macros. **NOTE** these macros are actually expanded by Pandoc
   itself in the case of non-TeX-based generation --- such as HTML --- so one can have
   shortcuts or other macros even for HTML.
+
+## The Completely Connected World Of Pandoc
+
+Can you count the number of translations possible? ...
+
+![Pandoc Format Conversions](http://johnmacfarlane.net/pandoc/diagram.png)
