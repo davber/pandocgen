@@ -47,7 +47,7 @@ where `sample.mk` is this short make file
 	include Makefile
 	
 This will generate output files in the `gen` directory. They are also uploaded to this
-Wiki, as a [PDF file](gen/README.pdf) and [HTML file](gen/README.html).
+Wiki, as a [PDF file](./gen/README.pdf) and [HTML file](./gen/README.html).
 
 ## Dependencies
 
@@ -126,6 +126,6 @@ The helper files are:
 
 Can you count the number of translations possible? ...
 
-![Pandoc Format Conversions](rez/diagram.png)
+![Pandoc Format Conversions](./rez/diagram.png)
 
 Again: Image copyright John MacFarlane
